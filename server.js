@@ -20,14 +20,20 @@ const someOtherPlaintextPassword = 'pass123';
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
-
-const hash = bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
+bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
     console.log(hash);
     bcrypt.compare(myPlaintextPassword, hash, (err, res) => {
-        console.log(res); // should be true
-       });
-     
+      console.log(res);
+    });
   });
+
+// const hash = bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
+//     console.log(hash);
+//     bcrypt.compare(myPlaintextPassword, hash, (err, res) => {
+//         console.log(res); // should be true
+//        });
+     
+//   });
 
  
 
