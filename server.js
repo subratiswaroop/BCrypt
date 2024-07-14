@@ -3,6 +3,7 @@ const express     = require('express');
 const bodyParser  = require('body-parser');
 const fccTesting  = require('./freeCodeCamp/fcctesting.js');
 const app         = express();
+const bcrypt      =require('bcrypt');
 fccTesting(app);
 const saltRounds = 12;
 const myPlaintextPassword = 'sUperpassw0rd!';
@@ -16,7 +17,9 @@ const someOtherPlaintextPassword = 'pass123';
 //END_ASYNC
 
 //START_SYNC
-
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
 
 
 //END_SYNC
