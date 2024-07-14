@@ -3,7 +3,7 @@ const express     = require('express');
 const bodyParser  = require('body-parser');
 const fccTesting  = require('./freeCodeCamp/fcctesting.js');
 const app         = express();
-const bcrypt      =require('bcrypt');
+const bcrypt      = require('bcrypt');
 fccTesting(app);
 const saltRounds = 12;
 const myPlaintextPassword = 'sUperpassw0rd!';
@@ -21,6 +21,15 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
+const hash = bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
+    // console.log(hash);
+    bcrypt.compare(myPlaintextPassword, hash, (err, res) => {
+        console.log(res); // should be true
+       });
+     
+  });
+
+ 
 
 //END_SYNC
 
