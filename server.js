@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 });
 
 const hash = bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
-    // console.log(hash);
+    console.log(hash);
     bcrypt.compare(myPlaintextPassword, hash, (err, res) => {
         console.log(res); // should be true
        });
